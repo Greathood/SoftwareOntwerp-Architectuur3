@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14A4976F-7DB6-4259-AFE8-D7D3A38DF937}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>states</RootNamespace>
+    <AssemblyName>states</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Pipeline\Analyse.cs" />
+    <Compile Include="Models\Pipeline\Build.cs" />
+    <Compile Include="Models\Pipeline\Deploy.cs" />
+    <Compile Include="Models\Pipeline\IPipelineStep.cs" />
+    <Compile Include="Models\Pipeline\Package.cs" />
+    <Compile Include="Models\Pipeline\Source.cs" />
+    <Compile Include="Models\SCM\IBranch.cs" />
+    <Compile Include="Models\SCM\ICommit.cs" />
+    <Compile Include="Models\SCM\Git\GitBranch.cs" />
+    <Compile Include="Models\SCM\Git\GitCommit.cs" />
+    <Compile Include="Models\SCM\Git\GitRepo.cs" />
+    <Compile Include="Models\SCM\Mercury\MercuryBranch.cs" />
+    <Compile Include="Models\SCM\Mercury\MercuryCommit.cs" />
+    <Compile Include="Models\SCM\Mercury\MercuryRepo.cs" />
+    <Compile Include="Models\SCM\IRepo.cs" />
+    <Compile Include="Models\Sprint\Activity.cs" />
+    <Compile Include="Models\Sprint\Backlog.cs" />
+    <Compile Include="Models\Sprint\BacklogItem.cs" />
+    <Compile Include="Models\Forum\Comment.cs" />
+    <Compile Include="Models\Forum\Forum.cs" />
+    <Compile Include="Models\Forum\Thread.cs" />
+    <Compile Include="Models\Sprint\Project.cs" />
+    <Compile Include="Models\Sprint\Report.cs" />
+    <Compile Include="Models\Pipeline\Test.cs" />
+    <Compile Include="Models\Users\Developer.cs" />
+    <Compile Include="Models\Users\ProductOwner.cs" />
+    <Compile Include="Models\Users\ScrumMaster.cs" />
+    <Compile Include="Models\Sprint\Sprint.cs" />
+    <Compile Include="Models\Users\User.cs" />
+    <Compile Include="Models\Pipeline\Utility.cs" />
+    <Compile Include="Run.cs" />
+    <Compile Include="Services\Pipeline\DevOpsIterator.cs" />
+    <Compile Include="Services\Pipeline\JenkinsIterator.cs" />
+    <Compile Include="Services\Pipeline\PipelineIterator.cs" />
+    <Compile Include="Services\Pipeline\PipelineRunner.cs" />
+    <Compile Include="Services\SCM\ContentManager.cs" />
+    <Compile Include="Services\SCM\GitFactory.cs" />
+    <Compile Include="Services\SCM\IContentManagerFactory.cs" />
+    <Compile Include="Services\SCM\MercuryFactory.cs" />
+    <Compile Include="States\BacklogState\BacklogState.cs" />
+    <Compile Include="States\BacklogState\DoingBacklogState.cs" />
+    <Compile Include="States\BacklogState\DoneBacklogState.cs" />
+    <Compile Include="States\BacklogState\TodoBacklogState.cs" />
+    <Compile Include="States\SprintState\ActiveSprintState.cs" />
+    <Compile Include="States\SprintState\ClosedSprintState.cs" />
+    <Compile Include="States\SprintState\FinishedSprintState.cs" />
+    <Compile Include="States\SprintState\InitializedSprintState.cs" />
+    <Compile Include="States\SprintState\ReviewSprintState.cs" />
+    <Compile Include="States\SprintState\SprintState.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
