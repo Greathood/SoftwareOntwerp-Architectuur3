@@ -61,9 +61,9 @@
     <Compile Include="SprintTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\states\states.csproj">
-      <Project>{40bd4a4f-e821-4bcd-91d2-4a7af485b49a}</Project>
-      <Name>states</Name>
+    <ProjectReference Include="..\soa3\SOA3.csproj">
+      <Project>{14A4976F-7DB6-4259-AFE8-D7D3A38DF937}</Project>
+      <Name>SOA3</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

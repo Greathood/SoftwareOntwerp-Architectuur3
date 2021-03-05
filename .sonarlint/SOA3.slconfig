@@ -1,0 +1,12 @@
+{
+  "ServerUri": "https://sonarqube.avans-informatica-breda.nl",
+  "Organization": null,
+  "ProjectKey": "SoA3Jari",
+  "ProjectName": "SoA3Jari",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWgV99R900alMZcAa2EJ",
+      "ProfileTimestamp": "2019-01-03T23:06:29Z"
+    }
+  }
+}
