@@ -1,15 +1,14 @@
 ﻿using SOA3.Models.Pipeline;
+using SOA3.Services.Pipeline;
 using System;
 
-namespace SOA3.Models.DevOps
+namespace SOA3.Models.Pipeline
 {
     class Build : IPipelineStep
     {
-        //Dit zijn acties die je software builden en linken. Naast .NET en .NET Core builds worden diverse andere builds ondersteund, 
-        //zoals Maven, Ant, maar ook een build job via Jenkins. 
-        public void run()
+        public void Run(IPipelineVisitor visitor)
         {
-            Console.WriteLine("PIPELINE: Running build step");
+            visitor.VisitBuild(this);
         }
     }
 }

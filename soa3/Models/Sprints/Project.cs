@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using SOA3.Models.SCM;
+using SOA3.Models.Users;
 
-namespace SOA3.Models
+namespace SOA3.Models.Sprints
 {
     public class Project
     {

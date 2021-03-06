@@ -1,5 +1,7 @@
+using SOA3.Models.Sprints;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SOA3.Models.SCM.Git
 {
@@ -32,12 +34,10 @@ namespace SOA3.Models.SCM.Git
         {
             foreach (var branch in Branches)
             {
-                foreach (var commit in branch.Commits)
+                var commit = branch.Commits.FirstOrDefault(x => x.Name == name);
+                if (commit is ICommit)
                 {
-                    if (commit.Name == name)
-                    {
-                        return commit;
-                    }
+                    return commit;
                 }
             }
                 

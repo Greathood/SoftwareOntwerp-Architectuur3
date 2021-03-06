@@ -1,4 +1,5 @@
-﻿using SOA3.States;
+﻿using SOA3.Models.Users;
+using SOA3.States;
 using SOA3.States.BacklogState;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOA3.Models
+namespace SOA3.Models.Sprints
 {
     class Activity
     {

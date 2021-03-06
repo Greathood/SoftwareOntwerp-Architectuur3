@@ -1,8 +1,9 @@
-﻿using SOA3.Models.Users;
+﻿using SOA3.Models.Sprints;
+using SOA3.Models.Users;
 using System;
 using System.Collections.Generic;
 
-namespace SOA3.Models
+namespace SOA3.Models.Users
 {
     public class ScrumMaster : User
     {

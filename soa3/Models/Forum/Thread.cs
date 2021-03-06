@@ -1,4 +1,5 @@
-﻿using SOA3.Models.Users;
+﻿using SOA3.Models.Sprints;
+using SOA3.Models.Users;
 using SOA3.States.BacklogState;
 using System;
 using System.Collections.Generic;

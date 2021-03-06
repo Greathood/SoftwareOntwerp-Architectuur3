@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOA3", "soa3\SOA3.csproj", "{14A4976F-7DB6-4259-AFE8-D7D3A38DF937}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOA3.Test", "soa3.Test\SOA3.Test.csproj", "{396E8D96-DA6B-4079-A150-A5C333A9C10F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOA3.UnitTest", "SOA3.UnitTest\SOA3.UnitTest.csproj", "{72C991EA-7288-483C-96EA-DEF750F532D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{14A4976F-7DB6-4259-AFE8-D7D3A38DF937}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14A4976F-7DB6-4259-AFE8-D7D3A38DF937}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14A4976F-7DB6-4259-AFE8-D7D3A38DF937}.Release|Any CPU.Build.0 = Release|Any CPU
-		{396E8D96-DA6B-4079-A150-A5C333A9C10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{396E8D96-DA6B-4079-A150-A5C333A9C10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{396E8D96-DA6B-4079-A150-A5C333A9C10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{396E8D96-DA6B-4079-A150-A5C333A9C10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C991EA-7288-483C-96EA-DEF750F532D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C991EA-7288-483C-96EA-DEF750F532D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C991EA-7288-483C-96EA-DEF750F532D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C991EA-7288-483C-96EA-DEF750F532D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

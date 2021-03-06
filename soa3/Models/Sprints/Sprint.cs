@@ -3,7 +3,7 @@ using SOA3.States.SprintState;
 using System;
 using System.Collections.Generic;
 
-namespace SOA3.Models
+namespace SOA3.Models.Sprints
 {
     public class Sprint
     {
@@ -45,7 +45,7 @@ namespace SOA3.Models
         }
 
         public Dictionary<User, int> getTeam() {
-            foreach (BacklogItem backlogItem in backlog.burnDown.Values) {
+            foreach (BacklogItem backlogItem in backlog.burnDown.Keys) {
                 if (team.ContainsKey(backlogItem.developer))
                 {
                     team[backlogItem.developer] += backlogItem.points;

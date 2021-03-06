@@ -3,7 +3,7 @@ using SOA3.States.BacklogState;
 using System.Collections.Generic;
 using SOA3.Models.SCM;
 
-namespace SOA3.Models
+namespace SOA3.Models.Sprints
 {
     public class BacklogItem
     {

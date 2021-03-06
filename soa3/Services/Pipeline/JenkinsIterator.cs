@@ -10,6 +10,11 @@ namespace SOA3.Services.Pipeline
             throw new NotImplementedException();
         }
 
+        public IPipelineVisitor GetVisitor()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool HasNext()
         {
             throw new NotImplementedException();

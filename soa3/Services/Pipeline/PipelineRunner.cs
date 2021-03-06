@@ -1,4 +1,5 @@
-﻿namespace SOA3.Services.Pipeline
+﻿
+namespace SOA3.Services.Pipeline
 {
     class PipelineRunner
     {
@@ -7,7 +8,7 @@
             while (iterator.HasNext())
             {
                 var step = iterator.GetNext();
-                step.run();
+                step.Run(iterator.GetVisitor());
             }
         }
     }

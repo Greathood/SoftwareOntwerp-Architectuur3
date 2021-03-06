@@ -1,15 +1,16 @@
 ﻿using SOA3.Models.Pipeline;
+using SOA3.Services.Pipeline;
 using System;
 
-namespace SOA3.Models.DevOps
+namespace SOA3.Models.Pipeline
 {
     class Source : IPipelineStep
     {
         //Activiteiten om de source code die gebouwd (en mogelijk getest en gedeployed) moet 
         //worden op te halen naar een context waarin de gehele pipeline wordt uitgevoerd.
-        public void run()
+        public void Run(IPipelineVisitor visitor)
         {
-            Console.WriteLine("PIPELINE: Running sources step");
+            visitor.VisitSource(this);
         }
     }
 }

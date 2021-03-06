@@ -1,17 +1,22 @@
-using SOA3.Models;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SOA3.Models.Forum;
 using SOA3.Models.Sprints;
 using SOA3.Models.Users;
 using System;
-using Xunit;
+using System.Collections.Generic;
+using System.Text;
 
-namespace SOA3.Test
+namespace SOA3.UnitTest
 {
+    /// <summary>
+    /// Summary description for ForumTest
+    /// </summary>
+    [TestClass]
     public class ForumTest
     {
         private readonly BacklogItem _backlogItem;
         private readonly Thread _thread;
-        
+
         public ForumTest()
         {
             Backlog backlog = new Backlog();
@@ -23,22 +28,22 @@ namespace SOA3.Test
             _backlogItem = new BacklogItem(backlog, "a new item", 12);
             _thread = forum.addThread(_backlogItem, "there is a issue", "description", dev);
         }
-        
-        [Fact]
+
+        [TestMethod]
         public void addComment()
         {
             // Arrange
             ProductOwner productOwner = new ProductOwner();
             Comment comment = new Comment("this doesn't work", productOwner);
-            
+
             // Act
             var result = _thread.addComment(comment);
-            
+
             // Assert
-            Assert.True(result);
+            Assert.IsTrue(result);
         }
-        
-        [Fact]
+
+        [TestMethod]
         public void addCommentToDone()
         {
             // Arrange
@@ -46,12 +51,12 @@ namespace SOA3.Test
             _backlogItem.backlogState.done();
             ProductOwner productOwner = new ProductOwner();
             Comment comment = new Comment("this doesn't work", productOwner);
-            
+
             // Act
             var result = _thread.addComment(comment);
-            
+
             // Assert
-            Assert.False(result);
+            Assert.IsFalse(result);
         }
     }
 }

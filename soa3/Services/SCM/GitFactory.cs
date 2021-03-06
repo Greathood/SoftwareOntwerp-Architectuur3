@@ -1,6 +1,7 @@
 ﻿using SOA3.Models;
 using SOA3.Models.SCM;
 using SOA3.Models.SCM.Git;
+using SOA3.Models.Sprints;
 
 namespace SOA3.Services
 {

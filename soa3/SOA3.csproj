@@ -6,12 +6,27 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{14A4976F-7DB6-4259-AFE8-D7D3A38DF937}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>states</RootNamespace>
-    <AssemblyName>states</AssemblyName>
+    <RootNamespace>SOA3</RootNamespace>
+    <AssemblyName>SOA3</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <CodeAnalysisRuleSet>..\.sonarlint\soa3jaricsharp.ruleset</CodeAnalysisRuleSet>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,26 +77,28 @@
     <Compile Include="Models\SCM\Mercury\MercuryCommit.cs" />
     <Compile Include="Models\SCM\Mercury\MercuryRepo.cs" />
     <Compile Include="Models\SCM\IRepo.cs" />
-    <Compile Include="Models\Sprint\Activity.cs" />
-    <Compile Include="Models\Sprint\Backlog.cs" />
-    <Compile Include="Models\Sprint\BacklogItem.cs" />
+    <Compile Include="Models\Sprints\Activity.cs" />
+    <Compile Include="Models\Sprints\Backlog.cs" />
+    <Compile Include="Models\Sprints\BacklogItem.cs" />
     <Compile Include="Models\Forum\Comment.cs" />
     <Compile Include="Models\Forum\Forum.cs" />
     <Compile Include="Models\Forum\Thread.cs" />
-    <Compile Include="Models\Sprint\Project.cs" />
-    <Compile Include="Models\Sprint\Report.cs" />
+    <Compile Include="Models\Sprints\Project.cs" />
+    <Compile Include="Models\Sprints\Report.cs" />
     <Compile Include="Models\Pipeline\Test.cs" />
     <Compile Include="Models\Users\Developer.cs" />
     <Compile Include="Models\Users\ProductOwner.cs" />
     <Compile Include="Models\Users\ScrumMaster.cs" />
-    <Compile Include="Models\Sprint\Sprint.cs" />
+    <Compile Include="Models\Sprints\Sprint.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Models\Pipeline\Utility.cs" />
     <Compile Include="Run.cs" />
     <Compile Include="Services\Pipeline\DevOpsIterator.cs" />
+    <Compile Include="Services\Pipeline\DevOpsVisitor.cs" />
     <Compile Include="Services\Pipeline\JenkinsIterator.cs" />
     <Compile Include="Services\Pipeline\PipelineIterator.cs" />
     <Compile Include="Services\Pipeline\PipelineRunner.cs" />
+    <Compile Include="Services\Pipeline\PipelineVisitor.cs" />
     <Compile Include="Services\SCM\ContentManager.cs" />
     <Compile Include="Services\SCM\GitFactory.cs" />
     <Compile Include="Services\SCM\IContentManagerFactory.cs" />
@@ -109,6 +126,18 @@
     <AdditionalFiles Include="..\.sonarlint\soa3jari\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

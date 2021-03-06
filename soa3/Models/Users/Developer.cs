@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOA3.Models
+namespace SOA3.Models.Users
 {
     public class Developer : User
     {

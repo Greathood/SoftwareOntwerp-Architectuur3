@@ -1,18 +1,22 @@
-using System;
-using SOA3.Models;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SOA3.Models.Sprints;
 using SOA3.Models.Users;
 using SOA3.States.SprintState;
-using Xunit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SOA3.Test
+namespace SOA3.UnitTest
 {
+    [TestClass]
     public class SprintTest
     {
         private readonly SprintState _sprintState;
         private readonly Sprint _sprint;
         private readonly BacklogItem _backlogItem1;
-        
+
         public SprintTest()
         {
             var scrumMaster = new ScrumMaster();
@@ -23,23 +27,23 @@ namespace SOA3.Test
             _sprint.backlog.addBacklogItem(_backlogItem1);
         }
 
-        [Fact]
+        [TestMethod]
         public void sprintPathTest()
         {
             _sprint.sprintState.start();
-            Assert.True(_sprint.sprintState is ActiveSprintState);
-            
+            Assert.IsTrue(_sprint.sprintState is ActiveSprintState);
+
             _sprint.sprintState.startReview();
-            Assert.True(_sprint.sprintState is ReviewSprintState);
-            
+            Assert.IsTrue(_sprint.sprintState is ReviewSprintState);
+
             _sprint.sprintState.close();
-            Assert.True(_sprint.sprintState is ClosedSprintState);
-            
+            Assert.IsTrue(_sprint.sprintState is ClosedSprintState);
+
             _sprint.sprintState.finish();
-            Assert.True(_sprint.sprintState is FinishedSprintState);
+            Assert.IsTrue(_sprint.sprintState is FinishedSprintState);
         }
-        
-        [Fact]
+
+        [TestMethod]
         public void addTeamMemberTest()
         {
             // Arrange
@@ -47,24 +51,24 @@ namespace SOA3.Test
             Developer dev2 = new Developer();
             Developer dev3 = new Developer();
             ScrumMaster scrum = new ScrumMaster();
-            
+
             // Act
-            
+
             _sprint.addTeamMember(dev1);
             _sprint.addTeamMember(dev2);
             _sprint.addTeamMember(dev3);
             _sprint.addTeamMember(scrum);
-            
+
             _sprint.removeTeamMember(dev2);
-            
+
             _backlogItem1.assign(dev1);
             _backlogItem1.backlogState.doing();
             _backlogItem1.backlogState.done();
             _sprint.backlog.updateBacklogItem(_backlogItem1);
-            
+
             // Assert
-            Assert.True(_sprint.getTeam().Count == 3);
-            Assert.True(
+            Assert.IsTrue(_sprint.getTeam().Count == 3);
+            Assert.IsTrue(
                 _sprint.getTeam().ContainsKey(dev1) &&
                             _sprint.getTeam().ContainsKey(dev3) &&
                             _sprint.getTeam().ContainsKey(scrum)

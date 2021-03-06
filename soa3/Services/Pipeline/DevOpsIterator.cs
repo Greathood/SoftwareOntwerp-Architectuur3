@@ -1,20 +1,18 @@
-﻿using SOA3.Models.DevOps;
-using SOA3.Models.Pipeline;
-using System;
+﻿using SOA3.Models.Pipeline;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SOA3.Services.Pipeline
 {
     class DevOpsIterator : PipelineIterator
     {
-        private List<IPipelineStep> pipelineSteps = new List<IPipelineStep>();
+        private readonly List<IPipelineStep> pipelineSteps = new List<IPipelineStep>();
         private int currentPosition = -1;
+        private IPipelineVisitor visitor;
 
         public DevOpsIterator()
         {
+            visitor = new DevOpsVisitor();
             pipelineSteps.Add(new Source());
             pipelineSteps.Add(new Build());
             pipelineSteps.Add(new Test());
@@ -34,9 +32,11 @@ namespace SOA3.Services.Pipeline
             return null;
         }
 
-        public bool HasNext()
+        public IPipelineVisitor GetVisitor()
         {
-            return currentPosition < pipelineSteps.Count()-1;
+            return visitor;
         }
+
+        public bool HasNext() => currentPosition < pipelineSteps.Count - 1;
     }
 }

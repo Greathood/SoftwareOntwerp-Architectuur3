@@ -1,4 +1,5 @@
 ﻿using SOA3.Models.Users;
+using SOA3.Models.Sprints;
 using System;
 using System.Collections.Generic;
 using System.Linq;

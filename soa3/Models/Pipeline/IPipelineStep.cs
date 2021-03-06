@@ -1,7 +1,9 @@
-﻿namespace SOA3.Models.Pipeline
+﻿using SOA3.Services.Pipeline;
+
+namespace SOA3.Models.Pipeline
 {
     interface IPipelineStep
     {
-        void run();
+        void Run(IPipelineVisitor visitor);
     }
 }

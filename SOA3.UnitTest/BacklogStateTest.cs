@@ -1,16 +1,16 @@
-﻿using SOA3.Models.Sprints;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SOA3.Models.Sprints;
 using SOA3.Models.Users;
 using SOA3.States.BacklogState;
 using System;
-using Xunit;
 
-namespace SOA3.Test
+namespace SOA3.UnitTest
 {
-    //TODO: Write Test for DoingBackLogState with activities
+    [TestClass]
     public class BacklogStateTest
     {
         private readonly BacklogItem _backlogItem1;
-        
+
         public BacklogStateTest()
         {
             var scrumMaster = new ScrumMaster();
@@ -18,66 +18,66 @@ namespace SOA3.Test
             _backlogItem1 = new BacklogItem(sprint.backlog, "mn leuke item", 18);
             sprint.backlog.addBacklogItem(_backlogItem1);
         }
-        
-        [Fact]
+
+        [TestMethod]
         public void backlogItemStateHappyPath()
         {
             //Act
             _backlogItem1.backlogState.doing();
-            
+
             // Assert (Can't go back to doing)
-            Assert.True(_backlogItem1.backlogState is DoingBacklogState);
-            
+            Assert.IsTrue(_backlogItem1.backlogState is DoingBacklogState);
+
             // Act
             _backlogItem1.backlogState.done();
-            
+
             // Assert
-            Assert.True(_backlogItem1.backlogState is DoneBacklogState);
+            Assert.IsTrue(_backlogItem1.backlogState is DoneBacklogState);
         }
-        
-        [Fact]
+
+        [TestMethod]
         public void backlogItemStateTodoToDone()
         {
             //Arrange
             _backlogItem1.backlogState.todo();
-            
+
             //Act
             _backlogItem1.backlogState.done();
-            
+
             // Assert (Can't go back to doing)
-            Assert.True(_backlogItem1.backlogState is TodoBacklogState);
-            Assert.False(_backlogItem1.backlogState is DoneBacklogState);
+            Assert.IsTrue(_backlogItem1.backlogState is TodoBacklogState);
+            Assert.IsFalse(_backlogItem1.backlogState is DoneBacklogState);
         }
-        
-        [Fact]
+
+        [TestMethod]
         public void backlogItemStateDoneToDoing()
         {
             // Arrange
             _backlogItem1.backlogState.doing();
             _backlogItem1.backlogState.done();
-            
+
             // Act
             _backlogItem1.backlogState.doing();
-            
+
             // Assert (Can't go back to doing)
-            Assert.True(_backlogItem1.backlogState is DoneBacklogState);
-            Assert.False(_backlogItem1.backlogState is DoingBacklogState);
+            Assert.IsTrue(_backlogItem1.backlogState is DoneBacklogState);
+            Assert.IsFalse(_backlogItem1.backlogState is DoingBacklogState);
         }
-        
+
         // This one sometimes fails because the Dictionary returns an exception with
         // "An item with the same key has already been added."
-        [Fact]
+        [TestMethod]
         public void backlogItemStateDoneToTodo()
         {
             // Arrange
             _backlogItem1.backlogState.doing();
             _backlogItem1.backlogState.done();
-            
+
             // Act
             _backlogItem1.backlogState.todo();
-            
+
             // Assert
-            Assert.True(_backlogItem1.backlogState is TodoBacklogState);
+            Assert.IsTrue(_backlogItem1.backlogState is TodoBacklogState);
         }
     }
 }

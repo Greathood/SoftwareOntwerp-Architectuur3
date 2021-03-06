@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using SOA3.Models.Sprints;
 using SOA3.Services;
 
 namespace SOA3.Models.SCM.Mercury
@@ -32,13 +34,12 @@ namespace SOA3.Models.SCM.Mercury
         {
             foreach (var branch in Branches)
             {
-                foreach (var commit in branch.Commits)
+                var commit = branch.Commits.First(x => x.Name == name);
+                if(commit is ICommit)
                 {
-                    if (commit.Name == name)
-                    {
-                        return commit;
-                    }
+                    return commit;
                 }
+                  
             }
                 
             return null;

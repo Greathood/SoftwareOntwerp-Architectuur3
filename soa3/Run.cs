@@ -1,16 +1,11 @@
-﻿using SOA3.Models;
-using SOA3.Models.Forum;
+﻿using SOA3.Models.Forum;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SOA3.Models.SCM;
-using SOA3.Models.SCM.Git;
-using SOA3.Models.SCM.Mercury;
 using SOA3.Services;
 using SOA3.Services.Pipeline;
+using SOA3.Models.Users;
+using SOA3.Models.Sprints;
 
 namespace SOA3
 {
@@ -78,14 +73,13 @@ namespace SOA3
             gitContentManager.AddCommit(currentBranch, "second Commit", "its okay I guess");
             gitContentManager.GetRepo().Branches.First().PrintCommits();
 
+            Console.WriteLine(gitContentManager.GetRepo().FindCommit("init commit").ToString());
+
 
             DevOpsIterator devOps = new DevOpsIterator();
             PipelineRunner pipeline = new PipelineRunner();
 
             pipeline.StartPipeline(devOps);
-
-            Console.ReadLine();
-            
         }
     }
 }

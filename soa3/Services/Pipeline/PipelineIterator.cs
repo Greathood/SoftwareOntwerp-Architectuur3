@@ -12,5 +12,7 @@ namespace SOA3.Services.Pipeline
     {
         IPipelineStep GetNext();
         bool HasNext();
+
+        IPipelineVisitor GetVisitor();
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOA3.Models
+namespace SOA3.Models.Sprints
 {
     [ExcludeFromCodeCoverage]
     public class Report
