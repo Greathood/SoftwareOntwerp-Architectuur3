@@ -1,6 +1,5 @@
+using SOA3.Models.Board;
 using System.Collections.Generic;
-using SOA3.Models.Sprints;
-using SOA3.Services;
 
 namespace SOA3.Models.SCM
 {

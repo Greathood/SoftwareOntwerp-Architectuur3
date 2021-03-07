@@ -1,10 +1,4 @@
-﻿using SOA3.Models;
-using SOA3.Models.Sprints;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SOA3.Models.Board;
 
 namespace SOA3.States.SprintState
 {

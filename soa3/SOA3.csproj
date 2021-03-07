@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Board\SoftwareProject.cs" />
     <Compile Include="Models\Pipeline\Analyse.cs" />
     <Compile Include="Models\Pipeline\Build.cs" />
     <Compile Include="Models\Pipeline\Deploy.cs" />
@@ -77,19 +78,22 @@
     <Compile Include="Models\SCM\Mercury\MercuryCommit.cs" />
     <Compile Include="Models\SCM\Mercury\MercuryRepo.cs" />
     <Compile Include="Models\SCM\IRepo.cs" />
-    <Compile Include="Models\Sprints\Activity.cs" />
-    <Compile Include="Models\Sprints\Backlog.cs" />
-    <Compile Include="Models\Sprints\BacklogItem.cs" />
+    <Compile Include="Models\Board\Activity.cs" />
+    <Compile Include="Models\Board\Backlog.cs" />
+    <Compile Include="Models\Board\BacklogItem.cs" />
     <Compile Include="Models\Forum\Comment.cs" />
     <Compile Include="Models\Forum\Forum.cs" />
     <Compile Include="Models\Forum\Thread.cs" />
-    <Compile Include="Models\Sprints\Project.cs" />
-    <Compile Include="Models\Sprints\Report.cs" />
+    <Compile Include="Models\Board\IBoard.cs" />
+    <Compile Include="Models\Board\KanbanBoard.cs" />
+    <Compile Include="Models\Board\Project.cs" />
+    <Compile Include="Models\Board\Report.cs" />
     <Compile Include="Models\Pipeline\Test.cs" />
+    <Compile Include="Models\Board\ScrumBoard.cs" />
     <Compile Include="Models\Users\Developer.cs" />
     <Compile Include="Models\Users\ProductOwner.cs" />
     <Compile Include="Models\Users\ScrumMaster.cs" />
-    <Compile Include="Models\Sprints\Sprint.cs" />
+    <Compile Include="Models\Board\Sprint.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Models\Pipeline\Utility.cs" />
     <Compile Include="Run.cs" />

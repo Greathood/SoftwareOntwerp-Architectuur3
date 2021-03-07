@@ -51,8 +51,11 @@
   <ItemGroup>
     <Compile Include="BacklogStateTest.cs" />
     <Compile Include="ForumTest.cs" />
-    <Compile Include="ProductOwnerTest.cs" />
+    <Compile Include="PipelineTest.cs" />
+    <Compile Include="ProjectTest.cs" />
+    <Compile Include="UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCMTest.cs" />
     <Compile Include="SprintTest.cs" />
   </ItemGroup>
   <ItemGroup>

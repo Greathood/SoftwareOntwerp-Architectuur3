@@ -1,12 +1,8 @@
 ﻿using SOA3.Models.Users;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SOA3.Models.Sprints
+namespace SOA3.Models.Board
 {
     [ExcludeFromCodeCoverage]
     public class Report
@@ -15,20 +11,23 @@ namespace SOA3.Models.Sprints
         string header { get; set; }
         string footer { get; set; }
 
-        public Report(Sprint sprint) {
+        public Report(Sprint sprint)
+        {
             this.sprint = sprint;
             this.header = "";
             this.footer = "";
         }
 
-        public string reportAsString() {
+        public string reportAsString()
+        {
             string s = "";
-            s += header; 
+            s += header;
             s += "Team members: ";
 
             //team members with obtained points
             Dictionary<User, int> users = sprint.getTeam();
-            foreach (User user in users.Keys) {
+            foreach (User user in users.Keys)
+            {
                 s += "'" + user.FirstName + " " + user.LastName + "' with total points: '" + users[user] + "', ";
             }
             s += "\n";

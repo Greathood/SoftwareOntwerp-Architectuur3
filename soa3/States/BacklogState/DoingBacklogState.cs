@@ -12,7 +12,8 @@ namespace SOA3.States.BacklogState
                 //all activities are done, we can set our state to done;
                 backlogItem.setState(new DoneBacklogState());
             }
-            else {
+            else
+            {
                 Console.WriteLine("not all activites are done.");
             }
         }

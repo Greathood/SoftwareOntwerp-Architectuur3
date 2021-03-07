@@ -1,10 +1,8 @@
-﻿using SOA3.Models;
-using SOA3.Models.Sprints;
-using System;
+﻿using SOA3.Models.Board;
 
 namespace SOA3.States.BacklogState
 {
-    public class BacklogState
+    public abstract class BacklogState
     {
         public BacklogItem backlogItem;
 

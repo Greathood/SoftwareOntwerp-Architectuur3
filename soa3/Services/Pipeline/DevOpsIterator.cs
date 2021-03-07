@@ -1,6 +1,5 @@
 ﻿using SOA3.Models.Pipeline;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SOA3.Services.Pipeline
 {
@@ -8,7 +7,7 @@ namespace SOA3.Services.Pipeline
     {
         private readonly List<IPipelineStep> pipelineSteps = new List<IPipelineStep>();
         private int currentPosition = -1;
-        private IPipelineVisitor visitor;
+        private readonly IPipelineVisitor visitor;
 
         public DevOpsIterator()
         {

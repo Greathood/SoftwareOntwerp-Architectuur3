@@ -1,10 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SOA3.Models.Board;
 using SOA3.Models.Forum;
-using SOA3.Models.Sprints;
 using SOA3.Models.Users;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SOA3.UnitTest
 {

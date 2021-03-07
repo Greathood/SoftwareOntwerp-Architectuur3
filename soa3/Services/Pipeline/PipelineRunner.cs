@@ -3,12 +3,20 @@ namespace SOA3.Services.Pipeline
 {
     class PipelineRunner
     {
-        public void StartPipeline(PipelineIterator iterator)
+
+        public PipelineIterator Iterator { get; }
+
+        public PipelineRunner(PipelineIterator iterator)
         {
-            while (iterator.HasNext())
+            this.Iterator = iterator;
+        }
+
+        public void StartPipeline()
+        {
+            while (Iterator.HasNext())
             {
-                var step = iterator.GetNext();
-                step.Run(iterator.GetVisitor());
+                var step = Iterator.GetNext();
+                step.Run(Iterator.GetVisitor());
             }
         }
     }

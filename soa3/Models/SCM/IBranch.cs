@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace SOA3.Models.SCM

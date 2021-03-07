@@ -11,7 +11,8 @@ namespace SOA3.Models.SCM.Git
         public GitBranch(string name)
         {
             Name = name;
-            Commits = new LinkedList<ICommit>(new LinkedList<GitCommit>());        }
+            Commits = new LinkedList<ICommit>(new LinkedList<GitCommit>());
+        }
 
         public bool AddCommit(ICommit commit)
         {

@@ -14,12 +14,12 @@ namespace SOA3.Models.SCM.Mercury
             Description = description;
             Hash = Guid.NewGuid().ToString();
         }
-        
+
         public string ToString()
         {
             return "Mercury Commit: " + Hash + "\n" +
                    "Name: " + Name + "\n" +
-                   "Description: " + (string.IsNullOrEmpty(Description)? "N\\A" : Description) + "\n";
+                   "Description: " + (string.IsNullOrEmpty(Description) ? "N\\A" : Description) + "\n";
         }
     }
 }

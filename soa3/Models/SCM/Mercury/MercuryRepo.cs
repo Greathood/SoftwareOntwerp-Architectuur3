@@ -1,8 +1,7 @@
+using SOA3.Models.Board;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SOA3.Models.Sprints;
-using SOA3.Services;
 
 namespace SOA3.Models.SCM.Mercury
 {
@@ -12,7 +11,8 @@ namespace SOA3.Models.SCM.Mercury
         public List<IBranch> Branches { get; set; }
         public Project Project { get; set; }
 
-        public MercuryRepo(string name, Project project) {
+        public MercuryRepo(string name, Project project)
+        {
             Name = name;
             Project = project;
             Branches = new List<IBranch>(new List<MercuryBranch>());
@@ -35,13 +35,13 @@ namespace SOA3.Models.SCM.Mercury
             foreach (var branch in Branches)
             {
                 var commit = branch.Commits.First(x => x.Name == name);
-                if(commit is ICommit)
+                if (commit is ICommit)
                 {
                     return commit;
                 }
-                  
+
             }
-                
+
             return null;
         }
     }

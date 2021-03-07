@@ -1,6 +1,5 @@
-using SOA3.Models;
+using SOA3.Models.Board;
 using SOA3.Models.SCM;
-using SOA3.Models.Sprints;
 
 namespace SOA3.Services
 {
@@ -9,25 +8,29 @@ namespace SOA3.Services
         private IContentManagerFactory factory;
         private IRepo repo;
 
-        public ContentManager(IContentManagerFactory factory){
+        public ContentManager(IContentManagerFactory factory)
+        {
             this.factory = factory;
         }
 
-        public void InitRepo(string name, Project project){
+        public void InitRepo(string name, Project project)
+        {
             repo = factory.CreateSCM(name, project);
             AddBranch("master");
         }
 
-        public void AddBranch(string name){
+        public void AddBranch(string name)
+        {
             IBranch branch = factory.CreateBranch(name);
             repo.AddBranch(branch);
         }
 
-        public void AddCommit(IBranch branch, string name, string description){
+        public void AddCommit(IBranch branch, string name, string description)
+        {
             ICommit commit = factory.CreateCommit(name, description);
             branch.AddCommit(commit);
         }
 
-        public IRepo GetRepo(){ return repo; }
+        public IRepo GetRepo() { return repo; }
     }
 }

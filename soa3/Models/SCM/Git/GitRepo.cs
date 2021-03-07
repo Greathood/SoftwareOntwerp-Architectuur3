@@ -1,4 +1,4 @@
-using SOA3.Models.Sprints;
+using SOA3.Models.Board;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace SOA3.Models.SCM.Git
             {
                 Console.WriteLine("Only Git Branches can be added to Git Repos");
             }
-            
+
         }
 
         public ICommit FindCommit(string name)
@@ -40,7 +40,7 @@ namespace SOA3.Models.SCM.Git
                     return commit;
                 }
             }
-                
+
             return null;
         }
     }

@@ -1,23 +1,26 @@
-﻿using SOA3.Models.Forum;
+﻿using SOA3.Models.Board;
+using SOA3.Models.Forum;
+using SOA3.Models.Users;
+using SOA3.Services;
+using SOA3.Services.Pipeline;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using SOA3.Services;
-using SOA3.Services.Pipeline;
-using SOA3.Models.Users;
-using SOA3.Models.Sprints;
 
 namespace SOA3
 {
     [ExcludeFromCodeCoverage]
-    class Run 
+    class Run
     {
         public void run()
         {
-            ScrumMaster scrumMaster = new ScrumMaster();
-            scrumMaster.FirstName = "Jack-Ryan";
+            ScrumMaster scrumMaster = new ScrumMaster
+            {
+                FirstName = "Jack-Ryan"
+            };
             ProductOwner productOwner = new ProductOwner();
-            Project project = new Project(productOwner, "project 1", "this is project 1");
+            Project project = new SoftwareProject(productOwner, "project 1", "this is project 1");
+            project.AddBoard(new ScrumBoard());
 
             Sprint sprint1 = new Sprint("Sprint 1", new DateTime(), new DateTime().AddDays(7), scrumMaster);
             sprint1.addTeamMember(scrumMaster);
@@ -25,6 +28,7 @@ namespace SOA3
             Forum forum = new Forum(sprint1);
             scrumMaster.addSprint(sprint1);
             productOwner.addSprint(sprint1);
+            project.GetBoard().AddSprint(sprint1);
 
             //lets start the sprint
             sprint1.sprintState.start();
@@ -32,6 +36,7 @@ namespace SOA3
             BacklogItem backlogItem1 = new BacklogItem(sprint1.backlog, "mn leuke item", 18);
             backlogItem1.Subscribe(scrumMaster);
             backlogItem1.assign(scrumMaster);
+
             sprint1.backlog.addBacklogItem(backlogItem1);
             Thread thread = forum.addThread(backlogItem1, "een probleem ivm iets", "bla bla", scrumMaster);
             thread.addComment(new Comment("klopt", scrumMaster));
@@ -59,17 +64,21 @@ namespace SOA3
             backlogItem1.backlogState.done();
 
             Console.WriteLine(new Report(sprint1).reportAsString());
-            
+
             Console.WriteLine("------------------------------------------------");
-            
+
 
             // Abstract Factory
             GitFactory gitFactory = new GitFactory();
             ContentManager gitContentManager = new ContentManager(gitFactory);
             gitContentManager.InitRepo("project1", project);
+            //Get first branch in Repo (which by default after init is master)
             var currentBranch = gitContentManager.GetRepo().Branches.First();
+
+            //git commit
             gitContentManager.AddCommit(currentBranch, "init commit", "");
             Console.WriteLine("");
+            //git commit
             gitContentManager.AddCommit(currentBranch, "second Commit", "its okay I guess");
             gitContentManager.GetRepo().Branches.First().PrintCommits();
 
@@ -77,9 +86,9 @@ namespace SOA3
 
 
             DevOpsIterator devOps = new DevOpsIterator();
-            PipelineRunner pipeline = new PipelineRunner();
+            PipelineRunner pipeline = new PipelineRunner(devOps);
 
-            pipeline.StartPipeline(devOps);
+            pipeline.StartPipeline();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using SOA3.Models.Sprints;
-using SOA3.Models.Users;
-using System;
+﻿using SOA3.Models.Board;
 using System.Collections.Generic;
 
 namespace SOA3.Models.Users
@@ -9,12 +7,19 @@ namespace SOA3.Models.Users
     {
         List<Sprint> Sprints;
 
-        public ScrumMaster() {
+        public ScrumMaster()
+        {
             Sprints = new List<Sprint>();
         }
 
-        public void addSprint(Sprint s) {      
+        public void addSprint(Sprint s)
+        {
             Sprints.Add(s);
+        }
+
+        public List<Sprint> getSprints()
+        {
+            return Sprints;
         }
     }
 }

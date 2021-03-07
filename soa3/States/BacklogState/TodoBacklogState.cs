@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SOA3.States.BacklogState
+﻿namespace SOA3.States.BacklogState
 {
     public class TodoBacklogState : BacklogState
     {

@@ -1,26 +1,25 @@
-﻿using SOA3.Models.Users;
+﻿using SOA3.Models.SCM;
+using SOA3.Models.Users;
 using SOA3.States.BacklogState;
 using System.Collections.Generic;
-using SOA3.Models.SCM;
 
-namespace SOA3.Models.Sprints
+namespace SOA3.Models.Board
 {
     public class BacklogItem
     {
         Backlog backlog;
-        List<Activity> activities;
+        private List<Activity> activities;
         public User developer;
         public BacklogState backlogState;
-        private List<User> subscribedUsers = new List<User>(); 
+        private List<User> subscribedUsers = new List<User>();
         private IBranch _branch;
 
         public int points { get; set; }
-        string description { get; set; }
+        public string description { get; set; }
 
-        public BacklogItem(Backlog backlog, string description, int points) {
+        public BacklogItem(Backlog backlog, string description, int points)
+        {
             this.backlog = backlog;
-            // Add the backlogItem to the backlog
-            backlog.addBacklogItem(this);
             this.description = description;
             backlogState = new TodoBacklogState();
             backlogState.setBacklogItem(this);
@@ -40,7 +39,8 @@ namespace SOA3.Models.Sprints
             activities = new List<Activity>();
         }
 
-        public void Subscribe(User user) {
+        public void Subscribe(User user)
+        {
             subscribedUsers.Add(user);
         }
 
@@ -51,12 +51,14 @@ namespace SOA3.Models.Sprints
 
         public void Notify()
         {
-            foreach(var user in subscribedUsers) {
-                user.Update("\n BacklogItem -"+ description + "- has been updated \n");
+            foreach (var user in subscribedUsers)
+            {
+                user.Update(this);
             }
         }
 
-        public void assign(User developer) {
+        public void assign(User developer)
+        {
             this.developer = developer;
             Notify();
         }
@@ -69,10 +71,17 @@ namespace SOA3.Models.Sprints
             Notify();
         }
 
+        public void AddActivity(Activity activity)
+        {
+            activities.Add(activity);
+        }
+
         public bool checkActiviesState()
         {
-            foreach (Activity a in activities) {
-                if (!(a.backlogState is DoneBacklogState)) {
+            foreach (Activity a in activities)
+            {
+                if (!a.done())
+                {
                     return false;
                 }
             }

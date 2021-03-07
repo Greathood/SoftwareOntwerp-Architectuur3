@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SOA3.Models.Sprints;
+using SOA3.Models.Board;
 using SOA3.Models.Users;
 using SOA3.States.BacklogState;
 using System;
@@ -20,7 +20,7 @@ namespace SOA3.UnitTest
         }
 
         [TestMethod]
-        public void backlogItemStateHappyPath()
+        public void BacklogItemStateHappyPath()
         {
             //Act
             _backlogItem1.backlogState.doing();
@@ -36,7 +36,7 @@ namespace SOA3.UnitTest
         }
 
         [TestMethod]
-        public void backlogItemStateTodoToDone()
+        public void BacklogItemStateTodoToDone()
         {
             //Arrange
             _backlogItem1.backlogState.todo();
@@ -50,7 +50,7 @@ namespace SOA3.UnitTest
         }
 
         [TestMethod]
-        public void backlogItemStateDoneToDoing()
+        public void BacklogItemStateDoneToDoing()
         {
             // Arrange
             _backlogItem1.backlogState.doing();
@@ -67,7 +67,7 @@ namespace SOA3.UnitTest
         // This one sometimes fails because the Dictionary returns an exception with
         // "An item with the same key has already been added."
         [TestMethod]
-        public void backlogItemStateDoneToTodo()
+        public void BacklogItemStateDoneToTodo()
         {
             // Arrange
             _backlogItem1.backlogState.doing();
@@ -78,6 +78,18 @@ namespace SOA3.UnitTest
 
             // Assert
             Assert.IsTrue(_backlogItem1.backlogState is TodoBacklogState);
+        }
+
+        [TestMethod]
+        public void BacklogItemActivityCheckTest()
+        {
+            _backlogItem1.AddActivity(new Activity(_backlogItem1.developer, "update database"));
+
+            _backlogItem1.backlogState.doing();
+            _backlogItem1.backlogState.done();
+
+            Assert.IsTrue(_backlogItem1.backlogState is DoingBacklogState);
+            Assert.IsFalse(_backlogItem1.checkActiviesState());
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SOA3.Models.SCM.Git
 {
@@ -17,12 +18,12 @@ namespace SOA3.Models.SCM.Git
             CommitDate = DateTime.Now;
         }
 
-
+        [ExcludeFromCodeCoverage]
         public string ToString()
         {
             return "Commit: " + Hash + " - " + CommitDate + "\n" +
                    "Name: " + Name + "\n" +
-                   "Description: " + (string.IsNullOrEmpty(Description)? "N\\A" : Description) + "\n";
+                   "Description: " + (string.IsNullOrEmpty(Description) ? "N\\A" : Description) + "\n";
         }
     }
 }
